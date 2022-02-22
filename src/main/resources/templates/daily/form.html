@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<p class="text-primary">Nova Daily</p>
+		</div>
+		<div class="card-body">
+			<form method="POST" th:object="${daily}" th:action="@{/daily/novo}">
+				<input type="hidden" th:field="*{id}">
+				<div class="form-group mb-3">
+					<label for="starter">Starter:</label> 
+					<select class="form-select" th:field="*{starter}">
+						<option th:each="starter:${listaStarters}" th:value="${starter.id}" th:text="${starter.nome}"></option>
+					</select>	
+				</div>	
+				<div class="form-group mb-3">
+					<label for="modulo">Modulo:</label> 
+					<select class="form-select" th:field="*{modulo}">
+						<option th:each="modulo:${listaModulos}" th:value="${modulo.id}" th:text="${modulo.nome}"></option>
+					</select>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="grupo">Grupo:</label> 
+					<select class="form-select" th:field="*{grupo}">
+						<option th:each="grupo:${listaGrupos}" th:value="${grupo.id}" th:text="${grupo.id}"></option>
+					</select>	
+				</div>
+				
+				<div class="form-group mb-3">
+					<label for="data">Data:</label> 
+					<input class="form-control" type="text" id="_data"></input>
+					<input type="hidden" th:field="*{data}">	
+					<div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="feito">Feito:</label> 
+					<input
+						class="form-control" type="text" th:field="*{feito}" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('feito')}" th:errors="*{feito}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="fazendo">Fazendo:</label> 
+					<input
+						class="form-control" type="text" th:field="*{fazendo}" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('fazendo')}" th:errors="*{fazendo}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="impedimentos">Impedimentos:</label> 
+					<input
+						class="form-control" type="text" th:field="*{impedimentos}" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('impedimentos')}" th:errors="*{impedimentos}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="presenca">Presença:</label> 
+					<select class="form-select" th:field="*{presenca}">
+						<option value="3">3-Normal</option>
+ 						<option value="1">1-Atrasado</option>
+  						<option value="0">0-Não entrou</option>
+					</select>	
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Salvar
+					Daily</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div layout:fragment="scripts3">
+<script>
+	$(function() {
+	$("#_data").datepicker({
+		dateFormat: "dd/mm/yy",
+		altFormat: "yy-mm-dd",
+		altField: "#data"
+	});	
+	});
+</script>
+</div>
+
+</html>

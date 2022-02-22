@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhuma daily encontrada!
+	</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+	<div th:if="${not #lists.isEmpty(lista)}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Starter</th>
+					<th>Modulo</th>
+					<th>Grupo</th>
+					<th>Data</th>
+					<th>Feito</th>
+					<th>Fazendo</th>
+					<th>Impedimentos</th>
+					<th>Presença</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="daily : ${lista}">
+					<td th:text="${daily.id}"></td>
+					<td th:text="${daily.starter.nome}"></td>
+					<td th:text="${daily.modulo.nome}"></td>
+					<td th:text="${daily.grupo.id}"></td>
+					<td th:text="${#dates.format(daily.data, 'dd/MM/yyyy')}"></td>
+					<td th:text="${daily.feito}"></td>
+					<td th:text="${daily.fazendo}"></td>
+					<td th:text="${daily.impedimentos}"></td>
+					<td th:text="${daily.presenca}"></td>
+					<td><a class="btn btn-primary btn-sm" th:href="@{/daily/editar(id=${daily.id})}">Editar</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/daily/excluir(id=${daily.id})}" onclick="return confirm('Você realmente deseja excluir essa daily?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</html>

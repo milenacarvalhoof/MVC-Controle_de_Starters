@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<p class="text-primary">Novo Starter</p>
+		</div>
+		<div class="card-body">
+			<form method="POST" th:object="${starter}" th:action="@{/starter/novo}">
+				<input type="hidden" th:field="*{id}">
+				<div class="form-group mb-3">
+					<label for="nome">Nome:</label> 
+					<input
+						class="form-control" type="text" th:field="*{nome}" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="quatroLetras">Quatro Letras:</label> 
+					<input
+						class="form-control" type="text" th:field="*{quatroLetras}" maxlength="4" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('quatroLetras')}" th:errors="*{quatroLetras}"></div>	
+				</div>
+				<button type="submit" class="btn btn-primary">Salvar
+					Starter</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div layout:fragment="scripts3">
+<script>
+	$(function() {
+	$("#_data").datepicker({
+		dateFormat: "dd/mm/yy",
+		altFormat: "yy-mm-dd",
+		altField: "#data"
+	});	
+	});
+</script>
+</div>
+
+</html>

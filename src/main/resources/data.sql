@@ -1,0 +1,93 @@
+INSERT INTO usuario VALUES('Admin', 'Gerente', '$2a$10$76Y4080NvrBq7TlZnso/f.Axf0HEH.sUMr76w56QERcKspiHn2CK.');
+INSERT INTO usuario VALUES('SM', 'Scrum Master', '$2a$10$7/yqRLN.HnSXB2wNNbX/ueR.7/WKiwRnpDc1afAWLqEi9y6ut8cZa');
+INSERT INTO role VALUES('ROLE_ADMIN');
+INSERT INTO role VALUES('ROLE_USER');
+INSERT INTO usuarios_roles(usuario_id, role_id) VALUES('Admin','ROLE_ADMIN');
+INSERT INTO usuarios_roles(usuario_id, role_id) VALUES('SM','ROLE_USER');
+INSERT INTO starter(nome, quatro_letras) VALUES('Milena Mattos','MAVT');
+INSERT INTO starter(nome, quatro_letras) VALUES('João Silva','JOSV');
+INSERT INTO starter(nome, quatro_letras) VALUES('Carolina Cavalcante','CAVC');
+INSERT INTO starter(nome, quatro_letras) VALUES('Pedro Santos','PSTO');
+INSERT INTO starter(nome, quatro_letras) VALUES('Juliana Sousa','JLSO');
+INSERT INTO starter(nome, quatro_letras) VALUES('Gabriel Pereira','GLPR');
+INSERT INTO scrum_master(nome, quatro_letras) VALUES('Lucas Andrade','LSAD');
+INSERT INTO scrum_master(nome, quatro_letras) VALUES('Clecio Silva','CLSI');
+INSERT INTO tecnologia(nome, descricao) VALUES('JAVA','java');
+INSERT INTO tecnologia(nome, descricao) VALUES('C#','c#');
+INSERT INTO tecnologia(nome, descricao) VALUES('PYTHON','python');
+INSERT INTO tecnologia(nome, descricao) VALUES('JAVASCRIPT','javascript');
+INSERT INTO grupo(tecnologia_id, scrum_master_id) VALUES('1', '1');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('1', '1');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('1', '2');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('1', '3');
+INSERT INTO grupo(tecnologia_id, scrum_master_id) VALUES('2', '2');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('2', '4');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('2', '5');
+INSERT INTO grupo_starters(grupo_id, starters_id) VALUES('2', '6');
+INSERT INTO modulo(nome) VALUES('MVC');
+INSERT INTO modulo(nome) VALUES('API');
+INSERT INTO modulo(nome) VALUES('TDD');
+INSERT INTO modulo(nome) VALUES('ANGULAR');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('1', '1', '9.5');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('2', '1', '8.5');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('3', '1', '9.4');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('4', '1', '9.7');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('5', '1', '9.0');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('6', '1', '8.3');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('1', '2', '9.8');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('2', '2', '7.9');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('3', '2', '8.8');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('4', '2', '9.2');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('5', '2', '9.7');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('6', '2', '8.7');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('1', '3', '9.2');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('2', '3', '7.2');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('3', '3', '8.5');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('4', '3', '8.8');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('5', '3', '9.4');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('6', '3', '8.6');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('1', '4', '9.6');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('2', '4', '8.9');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('3', '4', '9.9');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('4', '4', '9.7');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('5', '4', '9.5');
+INSERT INTO projeto(starter_id, etapa_id, nota) VALUES('6', '4', '9.1');
+INSERT INTO programa_start(nome, data_inicial, data_final) VALUES('START #1', '2021-08-01', '2022-01-30');
+INSERT INTO programa_start_tecnologias(programa_start_id, tecnologias_id) VALUES('1', '1');
+INSERT INTO programa_start_tecnologias(programa_start_id, tecnologias_id) VALUES('1', '2');
+INSERT INTO programa_start_modulos(programa_start_id, modulos_id) VALUES('1', '1');
+INSERT INTO programa_start_modulos(programa_start_id, modulos_id) VALUES('1', '2');
+INSERT INTO programa_start_modulos(programa_start_id, modulos_id) VALUES('1', '3');
+INSERT INTO programa_start_modulos(programa_start_id, modulos_id) VALUES('1', '4');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('1', '1', '1', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('2', '1', '1', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('3', '1', '1', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('4', '1', '2', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('5', '1', '2', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('6', '1', '2', '2021-12-01', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('1', '2', '1', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('2', '2', '1', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('3', '2', '1', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('4', '2', '2', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('5', '2', '2', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('6', '2', '2', '2021-12-02', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('1', '3', '1', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('2', '3', '1', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('3', '3', '1', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('4', '3', '2', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('5', '3', '2', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('6', '3', '2', '2021-12-03', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('1', '4', '1', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('2', '4', '1', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('3', '4', '1', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('4', '4', '2', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('5', '4', '2', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+INSERT INTO daily(starter_id, modulo_id, grupo_id, data, feito, fazendo, impedimentos, presenca) VALUES('6', '4', '2', '2021-12-04', 'Iniciou o projeto', 'Banco de dados', 'Sem impedimentos', '3');
+
+
+
+
+
+
+
+

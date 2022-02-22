@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhum projeto encontrado!</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}"
+		th:text="${mensagem}"></div>
+	<div th:if="${not #lists.isEmpty(lista)}">
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">Relatório de Notas</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{projeto/maioresNotas}">Maiores Notas</a></li>
+								<li><a class="dropdown-item" th:href="@{projeto/menoresNotas}">Menores Notas</a></li>
+							</ul></li>
+		</ul>					
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Starter</th>
+					<th>Etapa</th>
+					<th>Nota</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="projeto : ${lista}">
+					<td th:text="${projeto.id}"></td>
+					<td th:text="${projeto.starter.nome}"></td>
+					<td th:text="${projeto.etapa}"></td>
+					<td th:text="${projeto.nota}"></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{/projeto/editar(id=${projeto.id})}">Editar</a> <a
+						class="btn btn-primary btn-sm"
+						th:href="@{/projeto/excluir(id=${projeto.id})}"
+						onclick="return confirm('Você realmente deseja excluir esse Projeto?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</html>

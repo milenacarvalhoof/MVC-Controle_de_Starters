@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<p class="text-primary">Novo Programa Start</p>
+		</div>
+		<div class="card-body">
+			<form method="POST" th:object="${programaStart}" th:action="@{/programaStart/novo}">
+				<input type="hidden" th:field="*{id}">
+				<div class="form-group mb-3">
+					<label for="nome">Nome:</label> 
+					<input
+						class="form-control" type="text" th:field="*{nome}" required></input>
+					<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="dataInicial">Data de Início:</label> 
+					<input class="form-control" type="text" id="_data"></input>
+					<input type="hidden" th:field="*{dataInicial}">	
+					<div class="text-danger" th:if="${#fields.hasErrors('dataInicial')}" th:errors="*{dataInicial}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<label for="dataFinal">Data Final:</label> 
+					<input class="form-control" type="text" id="_dataFinal"></input>
+					<input type="hidden" th:field="*{dataFinal}">	
+					<div class="text-danger" th:if="${#fields.hasErrors('dataFinal')}" th:errors="*{dataFinal}"></div>	
+				</div>
+				<div class="form-group mb-3">
+					<p>Tecnologias</p>
+					<div th:each="tecnologia: ${listaTecnologias}">
+						<input type="checkbox" th:id="${tecnologia}" th:value="${tecnologia.id}" th:field="*{tecnologias}"/>
+						<label th:text="${tecnologia.nome}"></label>
+					</div>				
+				</div>
+				<div class="form-group mb-3">
+					<p>Modulos:</p>
+					<div th:each="modulo: ${listaModulos}">
+						<input type="checkbox" th:id="${modulo}" th:value="${modulo.id}" th:field="*{modulos}"/>
+						<label th:text="${modulo.nome}"></label>
+					</div>				
+				</div>
+								
+				<button type="submit" class="btn btn-primary">Salvar
+					Programa Start</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div layout:fragment="scripts">
+<script>
+	$(function() {
+	$("#_data").datepicker({
+		dateFormat: "dd/mm/yy",
+		altFormat: "yy-mm-dd",
+		altField: "#dataInicial"
+	});	
+	});
+</script>
+</div>
+
+<div layout:fragment="scripts2">
+<script>
+	$(function() {
+	$("#_dataFinal").datepicker({
+		dateFormat: "dd/mm/yy",
+		altFormat: "yy-mm-dd",
+		altField: "#dataFinal"
+	});	
+	});
+</script>
+</div>
+
+</html>

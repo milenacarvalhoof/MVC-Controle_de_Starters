@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhuma tecnologia cadastrada!
+	</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+	<div th:if="${not #lists.isEmpty(lista)}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Descrição</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tecnologia : ${lista}">
+					<td th:text="${tecnologia.id}"></td>
+					<td th:text="${tecnologia.nome}" width="50%"></td>
+					<td th:text="${tecnologia.descricao}" width="30%"></td>
+					<td><a class="btn btn-primary btn-sm" th:href="@{/tecnologia/editar(id=${tecnologia.id})}">Editar</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/tecnologia/excluir(id=${tecnologia.id})}" onclick="return confirm('Você realmente deseja excluir essa Tecnologia?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</html>

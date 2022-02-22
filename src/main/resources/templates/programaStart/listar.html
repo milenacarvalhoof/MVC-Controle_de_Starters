@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhum Programa Start encontrado!
+	</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+	<div th:if="${not #lists.isEmpty(lista)}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Data Inicial</th>
+					<th>Data Final</th>
+					<th>Tecnologias</th>
+					<th>Modulos</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="programaStart : ${lista}">
+					<td th:text="${programaStart.id}"></td>
+					<td th:text="${programaStart.nome}"></td>
+					<td th:text="${#dates.format(programaStart.dataInicial, 'dd/MM/yyyy')}"></td>
+					<td th:text="${#dates.format(programaStart.dataFinal, 'dd/MM/yyyy')}"></td>
+					<td th:text="${programaStart.tecnologias}"></td>
+					<td th:text="${programaStart.modulos}"></td>
+					<td><a class="btn btn-primary btn-sm" th:href="@{/programaStart/editar(id=${programaStart.id})}">Editar</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/programaStart/excluir(id=${programaStart.id})}" onclick="return confirm('Você realmente deseja excluir esse Programa Start?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</html>

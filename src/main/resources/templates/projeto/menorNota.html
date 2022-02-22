@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhum projeto encontrado!</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}"
+		th:text="${mensagem}"></div>
+	<div th:if="${not #lists.isEmpty(lista)}">					
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Modulo</th>
+					<th>Starter</th>
+					<th>Menor Nota</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="projeto : ${lista}">
+					<td th:text="${projeto.etapa.nome}"></td>
+					<td th:text="${projeto.starter.nome}"></td>
+					<td th:text="${projeto.nota}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</html>

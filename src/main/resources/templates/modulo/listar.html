@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+	<div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+		Nenhum modulo encontrado!
+	</div>
+	<div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+	<div class="card mb-3">
+	<div th:if="${not #lists.isEmpty(lista)}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Projetos</th>
+					<th>Dailys</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="modulo : ${lista}">
+					<td th:text="${modulo.id}"></td>
+					<td th:text="${modulo.nome}"></td>
+					<td th:text="${modulo.projetos}"></td>
+					<td th:text="${modulo.dailys}"></td>
+					<td><a class="btn btn-primary btn-sm" th:href="@{/modulo/editar(id=${modulo.id})}">Editar</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/modulo/excluir(id=${modulo.id})}" onclick="return confirm('Você realmente deseja excluir esse Módulo?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+
+</html>
